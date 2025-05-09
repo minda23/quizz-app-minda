@@ -1,6 +1,5 @@
 "use client"
-
-//import './index.css';
+import QuizzMain from "@/components/quizzMain"
 
 
 
