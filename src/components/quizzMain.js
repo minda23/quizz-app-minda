@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, FormControlLabel } from "@mui/material";
-//import './quizzMain.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
