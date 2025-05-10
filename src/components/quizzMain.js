@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Switch, FormControlLabel } from "@mui/material";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Question from './question';
 
 const QuizzMain = () => {
     const [sections, setSections] = useState([]);
@@ -64,17 +65,17 @@ const QuizzMain = () => {
                             </button>
                         ))}
                     </div>
+                    <Question quizzes={sections} />;
                 </div>
-
-
             </div>
-            <div>
-                <ProgressBar className='progressbar' variant="info" now={20} style={{ width: '35%', marginLeft: '10rem', marginBottom: '3rem' }} />
+            <div className="progressbar-container">
+                <ProgressBar
+                    className="responsive-progressbar"
+                    variant="info"
+                    now={20}
+                />
             </div>
-
         </>
-
-
     )
 }
 export default QuizzMain;
