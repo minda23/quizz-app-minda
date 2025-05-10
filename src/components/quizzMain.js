@@ -59,7 +59,7 @@ const QuizzMain = () => {
                 <div className="quizz">
                     <div className="subjects-list">
                         {sections.map((subject, index) => (
-                            <button className="subject-card" key={index}>
+                            <button onClick={ } className="subject-card" key={index}>
                                 <img src={subject.icon} alt={subject.title} />
                                 {subject.title}
                             </button>
