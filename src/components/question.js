@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react';
+// props.quizzes → [ { title, questions:[...] }, … ]
 
-const Question = ({ quizzes }) => {
-    return (
-        <div>
-            <button className="questions">
-                {quizzes.questions}
-            </button>
-        </div>
-    );
-};
+const Questions = ({ quizzes }) => (
+    <div>
+        {quizzes.map((quiz, quizIndex) => (
+            <section key={quizIndex}>
+                <h2>{quiz.title}</h2>
 
-export default Question;
+                {quiz.questions.map((q, qIndex) => (
+                    <button key={qIndex} className="questions">
+                        {q.question}
+                    </button>
+                ))}
+            </section>
+        ))}
+    </div>
+);
+
+export default Questions;
