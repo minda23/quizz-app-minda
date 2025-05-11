@@ -1,19 +1,19 @@
-// props.quizzes → [ { title, questions:[...] }, … ]
+import React, { useState, useEffect } from 'react';
 
-const Questions = ({ quizzes }) => (
-    <div>
-        {quizzes.map((quiz, quizIndex) => (
-            <section key={quizIndex}>
-                <h2>{quiz.title}</h2>
+const QuestionList = ({ questions }) => {
+    if (!questions || questions.length === 0) {
+        return <p>No questions available.</p>;
+    }
 
-                {quiz.questions.map((q, qIndex) => (
-                    <button key={qIndex} className="questions">
-                        {q.question}
-                    </button>
-                ))}
-            </section>
-        ))}
-    </div>
-);
+    return (
+        <div className="questions-container">
+            {questions.map((q, index) => (
+                <button key={index} className="questions">
+                    {q.question}
+                </button>
+            ))}
+        </div>
+    );
+};
 
-export default Questions;
+export default QuestionList;

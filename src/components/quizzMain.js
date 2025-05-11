@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, FormControlLabel } from "@mui/material";
+import { Switch } from "@mui/material";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Question from './question';
 
 const QuizzMain = () => {
     const [sections, setSections] = useState([]);
-    const [checked, setChecked] = useState(false); // Toggle state
+    const [checked, setChecked] = useState(false);
+    const [selectedTheme, setSelectedTheme] = useState("");
 
     const handleChange = (event) => {
         setChecked(event.target.checked);
@@ -19,19 +20,12 @@ const QuizzMain = () => {
             .catch((error) => console.error("Error fetching data:", error));
     }, []);
 
-
     useEffect(() => {
         document.body.classList.toggle('light-mode', checked);
         document.body.classList.toggle('dark-mode', !checked);
     }, [checked]);
 
-
-    const images = [
-        './images/icon-moon-dark.svg',
-        './images/icon-moon-light.svg',
-        './images/icon-sun-dark.svg',
-        './images/icon-sun-light.svg'
-    ];
+    const selectedItem = sections.find(item => item.title === selectedTheme);
 
     return (
         <>
@@ -54,20 +48,28 @@ const QuizzMain = () => {
                         />
                         <span role="img" aria-label="moon">🌙</span>
                     </div>
-
                 </div>
+
                 <div className="quizz">
                     <div className="subjects-list">
                         {sections.map((subject, index) => (
-                            <button className="subject-card" key={index}>
+                            <button
+                                className="subject-card"
+                                key={index}
+                                onClick={() => setSelectedTheme(subject.title)}
+                            >
                                 <img src={subject.icon} alt={subject.title} />
                                 {subject.title}
                             </button>
                         ))}
                     </div>
-                    <Question quizzes={sections} />;
+
+                    {!!selectedItem && (
+                        <Question questions={selectedItem.questions} />
+                    )}
                 </div>
             </div>
+
             <div className="progressbar-container">
                 <ProgressBar
                     className="responsive-progressbar"
@@ -76,6 +78,7 @@ const QuizzMain = () => {
                 />
             </div>
         </>
-    )
-}
+    );
+};
+
 export default QuizzMain;
