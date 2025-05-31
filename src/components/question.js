@@ -5,6 +5,8 @@ const QuestionList = ({ questions }) => {
         return <p>No questions available.</p>;
     }
 
+
+
     return (
         <div className="questions-container">
             {questions.map((q, index) => (

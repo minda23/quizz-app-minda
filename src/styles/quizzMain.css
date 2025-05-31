@@ -81,13 +81,45 @@
 }
 
 /* Dark mode */
+/* Light Theme (default) */
+body {
+    background-color: #ffffff;
+    background-image: url('/images/pattern-background-desktop.light.svg');
+    transition: background-color 0.3s ease, background-image 0.3s ease;
+    color: #000;
+}
+
+.heading-quizz {
+    color: #1e2a38;
+}
+
+.text-heading {
+    color: #3b4d66;
+}
+
+.subject-card {
+    background: #e4e8f0;
+    color: #1e2a38;
+}
+
+.sub-btn {
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 480px;
+    font-size: 1.7;
+    color: white;
+    border-radius: 2rem;
+    background-color: #A729F5;
+}
+
+/* Dark Theme */
 body.dark-mode {
     background-color: #1e2a38;
-    transition: background-color 0.3s ease;
+    background-image: url('/images/pattern-background-desktop.dark.svg');
 }
 
 body.dark-mode .heading-quizz {
-    color: #fff;
+    color: #ffffff;
 }
 
 body.dark-mode .text-heading {
@@ -96,8 +128,9 @@ body.dark-mode .text-heading {
 
 body.dark-mode .subject-card {
     background: #3b4d66;
-    color: #fff;
+    color: #ffffff;
 }
+
 
 .progressbar-container {
     width: 100%;

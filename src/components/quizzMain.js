@@ -8,9 +8,35 @@ const QuizzMain = () => {
     const [sections, setSections] = useState([]);
     const [checked, setChecked] = useState(false);
     const [selectedTheme, setSelectedTheme] = useState("");
+    const [score, setScore] = useState(0);
+    const [showScore, setShowScore] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1); // ✅ track page
+    const [isQuizStarted, setIsQuizStarted] = useState(false); // ✅ hide categories
 
     const handleChange = (event) => {
         setChecked(event.target.checked);
+    };
+
+    const pageSize = 4;
+
+    const selectedItem = sections.find(item => item.title === selectedTheme);
+    const questions = selectedItem?.questions || [];
+
+    const totalPages = Math.ceil(questions.length / pageSize);
+    const paginatedQuestions = questions.slice((currentPage - 1) * pageSize, currentPage * pageSize); // ✅
+
+    const handleSubmitClick = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        } else {
+            setShowScore(true);
+        }
+    };
+
+    const getButtonLabel = () => {
+        if (showScore) return "Score Submitted";
+        if (currentPage < totalPages) return "Next Question";
+        return "Submit";
     };
 
     useEffect(() => {
@@ -24,8 +50,6 @@ const QuizzMain = () => {
         document.body.classList.toggle('light-mode', checked);
         document.body.classList.toggle('dark-mode', !checked);
     }, [checked]);
-
-    const selectedItem = sections.find(item => item.title === selectedTheme);
 
     return (
         <>
@@ -51,21 +75,33 @@ const QuizzMain = () => {
                 </div>
 
                 <div className="quizz">
-                    <div className="subjects-list">
-                        {sections.map((subject, index) => (
+                    {!isQuizStarted ? (
+                        <div className="subjects-list">
+                            {sections.map((subject, index) => (
+                                <button
+                                    className="subject-card"
+                                    key={index}
+                                    onClick={() => {
+                                        setSelectedTheme(subject.title);
+                                        setIsQuizStarted(true); // ✅ hide list
+                                    }}
+                                >
+                                    <img src={subject.icon} alt={subject.title} />
+                                    {subject.title}
+                                </button>
+                            ))}
+                        </div>
+                    ) : (
+                        <div>
+                            <Question questions={paginatedQuestions} />
                             <button
-                                className="subject-card"
-                                key={index}
-                                onClick={() => setSelectedTheme(subject.title)}
+                                className='sub-btn'
+                                onClick={handleSubmitClick}
+                                disabled={showScore}
                             >
-                                <img src={subject.icon} alt={subject.title} />
-                                {subject.title}
+                                {getButtonLabel()}
                             </button>
-                        ))}
-                    </div>
-
-                    {!!selectedItem && (
-                        <Question questions={selectedItem.questions} />
+                        </div>
                     )}
                 </div>
             </div>
@@ -74,7 +110,7 @@ const QuizzMain = () => {
                 <ProgressBar
                     className="responsive-progressbar"
                     variant="info"
-                    now={20}
+                    now={(currentPage / totalPages) * 100}
                 />
             </div>
         </>
