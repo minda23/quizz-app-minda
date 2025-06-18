@@ -4,20 +4,26 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Question from './question';
 
+export const generateStaticParams = async () => { };
+
 const QuizzMain = () => {
+
+
+
+
     const [sections, setSections] = useState([]);
     const [checked, setChecked] = useState(false);
     const [selectedTheme, setSelectedTheme] = useState("");
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1); // ✅ track page
-    const [isQuizStarted, setIsQuizStarted] = useState(false); // ✅ hide categories
+    const [currentPage, setCurrentPage] = useState(1);
+    const [isQuizStarted, setIsQuizStarted] = useState(false);
 
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
 
-    const pageSize = 4;
+    const pageSize = 5;
 
     const selectedItem = sections.find(item => item.title === selectedTheme);
     const questions = selectedItem?.questions || [];

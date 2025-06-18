@@ -2,5 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
 };
+export default {
+  output: 'export',
+}
 
-export default nextConfig;

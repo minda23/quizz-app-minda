@@ -90,11 +90,12 @@ body {
 }
 
 .heading-quizz {
-    color: #1e2a38;
+    color: #313e51;
+    font-size: clamp(2.5rem, 1.972rem + 2.25vw, 4rem);
 }
 
 .text-heading {
-    color: #3b4d66;
+    color: #313e51;
 }
 
 .subject-card {
@@ -135,11 +136,12 @@ body.dark-mode .subject-card {
 .progressbar-container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     padding: 1rem;
+    padding-left: 10rem;
     box-sizing: border-box;
     position: relative;
-    bottom: 7rem;
+    bottom: 10rem;
 }
 
 .responsive-progressbar {
