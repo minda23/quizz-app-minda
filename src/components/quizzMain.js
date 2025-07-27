@@ -4,33 +4,50 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Question from './question';
 
-export const generateStaticParams = async () => { };
+// použiť currentPage a zobraziť relevantnu otazku.
+// ked je current page 1 tak sa zobrazi prvá otazka. ked je druha sa zobrazi 2.
+// jak urobim ked je current page[1] tak sa zobrazi prvá otazka
+// bude sa dynamicky update index question [1].
+// podľa toho ktora je current page v tom question tak zobrať všetky odpovede z prvej qeustion, budem mapovať cez odpovede nie cez otazku.
+// ked sa klikne gombik next tak potom sa zmeni page na page plus 1.
+
+//Dobry den, je to na vas, 
+//mozete but vybrat tu spravnu otazku v tom prvom komponente a
+ //potom ju posunut do QuestionList, alebo, mozete posunut currentPage do QuestionList a tak ju az tam vybrat :)
 
 const QuizzMain = () => {
-
-
-
-
-    const [sections, setSections] = useState([]);
+    const [quizzData, setQuizzData] = useState([]);
     const [checked, setChecked] = useState(false);
     const [selectedTheme, setSelectedTheme] = useState("");
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [isQuizStarted, setIsQuizStarted] = useState(false);
+    const [currentQuestion, setCurrentQuestion] = useState(1);
+    const [selectedQuestion, setSelectedQuestion] = useState ("")
+     const [isQuizStarted, setIsQuizStarted] = useState(false);
+    const [show, setShow] = useState(false);
 
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
 
-    const pageSize = 5;
+    const setNewQuestion = () => {
+        if (currentPage[1] === selectedQuestion) {
+            return;
+        }
+     };
 
-    const selectedItem = sections.find(item => item.title === selectedTheme);
+    const AnswerPerPage = 4;
+
+    const selectedItem = quizzData.find(item => item.title === selectedTheme);
     const questions = selectedItem?.questions || [];
 
     const totalPages = Math.ceil(questions.length / pageSize);
-    const paginatedQuestions = questions.slice((currentPage - 1) * pageSize, currentPage * pageSize); // ✅
+    console.log(totalPages)
 
+    console.log(totalPages)
+    
+    const ChooseRightQuestion = questions.slice((selectedQuestion - 1) * pageSize, selectedQuestion * pageSize); 
+    
     const handleSubmitClick = () => {
         if (currentPage < totalPages) {
             setCurrentPage(currentPage + 1);
@@ -83,23 +100,25 @@ const QuizzMain = () => {
                 <div className="quizz">
                     {!isQuizStarted ? (
                         <div className="subjects-list">
-                            {sections.map((subject, index) => (
+                            {quizzData.map((question, index) => (
                                 <button
                                     className="subject-card"
                                     key={index}
                                     onClick={() => {
-                                        setSelectedTheme(subject.title);
-                                        setIsQuizStarted(true); // ✅ hide list
+                                        setSelectedTheme(question.title);
+                                        setIsQuizStarted(true); 
                                     }}
                                 >
-                                    <img src={subject.icon} alt={subject.title} />
-                                    {subject.title}
+                                    <img src={subject.icon} alt={question.title} />
+                                    {question.title}
+                                    {question.question.options.map((option, key) => (
+                                        <Question key={key}>{option}</Question>
+                                    ))}
                                 </button>
                             ))}
                         </div>
                     ) : (
                         <div>
-                            <Question questions={paginatedQuestions} />
                             <button
                                 className='sub-btn'
                                 onClick={handleSubmitClick}

@@ -199,3 +199,10 @@ body.dark-mode .subject-card {
         margin-left: 3.5rem;
     }
 }
+
+@media (max-width: 300px) {
+    .left-section {
+        margin-top: 5rem;
+        margin-left: -0.5rem;
+    }
+}
