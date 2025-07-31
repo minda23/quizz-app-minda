@@ -10,7 +10,6 @@ import Question from './question';
 // bude sa dynamicky update index question [1].
 // podľa toho ktora je current page v tom question tak zobrať všetky odpovede z prvej qeustion, budem mapovať cez odpovede nie cez otazku.
 // ked sa klikne gombik next tak potom sa zmeni page na page plus 1.
-
 //Dobry den, je to na vas, 
 //mozete but vybrat tu spravnu otazku v tom prvom komponente a
  //potom ju posunut do QuestionList, alebo, mozete posunut currentPage do QuestionList a tak ju az tam vybrat :)
@@ -18,54 +17,36 @@ import Question from './question';
 const QuizzMain = () => {
     const [quizzData, setQuizzData] = useState([]);
     const [checked, setChecked] = useState(false);
-    const [selectedTheme, setSelectedTheme] = useState("");
-    const [score, setScore] = useState(0);
+    const [selectedQuestion, setSelectedQuestion] = useState("");
     const [showScore, setShowScore] = useState(false);
-    const [currentQuestion, setCurrentQuestion] = useState(1);
-    const [selectedQuestion, setSelectedQuestion] = useState ("")
-     const [isQuizStarted, setIsQuizStarted] = useState(false);
-    const [show, setShow] = useState(false);
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [isQuizStarted, setIsQuizStarted] = useState(false);
+
+    const totalQuestions = 10;
+
+    const selectedItem = quizzData.find(item => item.title === currentQuestion);
+    console.log(selectedItem)
 
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
 
     const setNewQuestion = () => {
-        if (currentPage[1] === selectedQuestion) {
-            return;
-        }
+        setCurrentQuestion(currentQuestion + 1)
      };
 
-    const AnswerPerPage = 4;
-
-    const selectedItem = quizzData.find(item => item.title === selectedTheme);
-    const questions = selectedItem?.questions || [];
-
-    const totalPages = Math.ceil(questions.length / pageSize);
-    console.log(totalPages)
-
-    console.log(totalPages)
     
-    const ChooseRightQuestion = questions.slice((selectedQuestion - 1) * pageSize, selectedQuestion * pageSize); 
-    
-    const handleSubmitClick = () => {
-        if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
-        } else {
-            setShowScore(true);
-        }
-    };
 
     const getButtonLabel = () => {
         if (showScore) return "Score Submitted";
-        if (currentPage < totalPages) return "Next Question";
+        if (currentQuestion < totalQuestions) return "Next Question";
         return "Submit";
     };
 
     useEffect(() => {
         fetch("./data.json")
             .then((response) => response.json())
-            .then((data) => setSections(data.quizzes))
+            .then((data) => setQuizzData(data.quizzes))
             .catch((error) => console.error("Error fetching data:", error));
     }, []);
 
@@ -73,6 +54,15 @@ const QuizzMain = () => {
         document.body.classList.toggle('light-mode', checked);
         document.body.classList.toggle('dark-mode', !checked);
     }, [checked]);
+
+    console.log("Hello world!")
+    console.log(quizzData);
+
+    if (quizzData === undefined || quizzData.length === 0 || quizzData[0] === undefined) {
+        return (<div>Loading...</div>);
+    }
+
+    console.log(quizzData[0]);
 
     return (
         <>
@@ -98,36 +88,30 @@ const QuizzMain = () => {
                 </div>
 
                 <div className="quizz">
-                    {!isQuizStarted ? (
-                        <div className="subjects-list">
-                            {quizzData.map((question, index) => (
+                     (
+                        <div className="quizz-list">
+                            {/* <div className='question-text'>{quizzData.questions[0].question.title}</div> */}
+                            {quizzData[0].questions[currentQuestion].choices.map((choice, index)  => (
+
                                 <button
-                                    className="subject-card"
+                                    className="question-card"
                                     key={index}
-                                    onClick={() => {
-                                        setSelectedTheme(question.title);
-                                        setIsQuizStarted(true); 
-                                    }}
+                                     onClick={setNewQuestion}
                                 >
-                                    <img src={subject.icon} alt={question.title} />
-                                    {question.title}
-                                    {question.question.options.map((option, key) => (
-                                        <Question key={key}>{option}</Question>
-                                    ))}
+                                 {choice}
                                 </button>
+                                
                             ))}
-                        </div>
-                    ) : (
-                        <div>
-                            <button
+                              <button
                                 className='sub-btn'
-                                onClick={handleSubmitClick}
+                                onClick={setNewQuestion}
                                 disabled={showScore}
                             >
                                 {getButtonLabel()}
                             </button>
                         </div>
-                    )}
+                    ) 
+                    
                 </div>
             </div>
 
@@ -135,7 +119,7 @@ const QuizzMain = () => {
                 <ProgressBar
                     className="responsive-progressbar"
                     variant="info"
-                    now={(currentPage / totalPages) * 100}
+                    now={(currentQuestion / totalQuestions) * 100}
                 />
             </div>
         </>
