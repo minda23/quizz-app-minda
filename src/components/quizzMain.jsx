@@ -20,20 +20,19 @@ const QuizzMain = () => {
     const [selectedQuestion, setSelectedQuestion] = useState("");
     const [showScore, setShowScore] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [isQuizStarted, setIsQuizStarted] = useState(false);
-
+    const [selectedChoice, setSelectedChoice] = useState(0)
     const totalQuestions = 10;
 
     const selectedItem = quizzData.find(item => item.title === currentQuestion);
     console.log(selectedItem)
 
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
-
     const setNewQuestion = () => {
         setCurrentQuestion(currentQuestion + 1)
      };
+
+     const handleChange = (event) => {
+  setChecked(event.target.checked);
+};
 
     
 
@@ -63,7 +62,7 @@ const QuizzMain = () => {
     }
 
     console.log(quizzData[0]);
-
+ const chooseRightAnswer = quizzData[0].questions[currentQuestion].choices.filter((answer) => answer.title === selectedChoice)
     return (
         <>
             <div className="quizz-container">
@@ -92,23 +91,17 @@ const QuizzMain = () => {
                         <div className="quizz-list">
                             {/* <div className='question-text'>{quizzData.questions[0].question.title}</div> */}
                             {quizzData[0].questions[currentQuestion].choices.map((choice, index)  => (
-
-                                <button
-                                    className="question-card"
-                                    key={index}
-                                     onClick={setNewQuestion}
-                                >
-                                 {choice}
-                                </button>
-                                
+                                 <div key={index}>
+                                <Question choice={choice} setNewQuestion={setNewQuestion} answer={chooseRightAnswer} />
+                                </div>
                             ))}
-                              <button
-                                className='sub-btn'
-                                onClick={setNewQuestion}
-                                disabled={showScore}
-                            >
-                                {getButtonLabel()}
-                            </button>
+                                
+                             <button
+                        className='sub-btn'
+                        onClick={setNewQuestion}
+                        
+                   >nextQuestion
+                 </button>
                         </div>
                     ) 
                     
