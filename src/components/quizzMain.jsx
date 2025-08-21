@@ -34,10 +34,7 @@ const QuizzMain = () => {
         }
     }
 
-
-    
-
-    const getButtonLabel = () => {
+        const getButtonLabel = () => {
         if (showScore) return "Score Submitted";
         if (currentQuestion < totalQuestions) return "Next Question";
         return "Submit";
@@ -95,7 +92,7 @@ const QuizzMain = () => {
                      (
                         <div className="quizz-list">
                             {quizzData[0].questions[currentQuestion].choices.map((choice, index)  => (
-                                 <div key={index}>
+                                 <div key={choice}>
                                     <Answer 
                                         onClick={() => selectAnswer(choice)} 
                                         choice={choice} 
