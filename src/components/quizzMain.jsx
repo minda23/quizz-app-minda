@@ -2,18 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Switch } from "@mui/material";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Question from './question';
-
-// použiť currentPage a zobraziť relevantnu otazku.
-// ked je current page 1 tak sa zobrazi prvá otazka. ked je druha sa zobrazi 2.
-// jak urobim ked je current page[1] tak sa zobrazi prvá otazka
-// bude sa dynamicky update index question [1].
-// podľa toho ktora je current page v tom question tak zobrať všetky odpovede z prvej qeustion, budem mapovať cez odpovede nie cez otazku.
-// ked sa klikne gombik next tak potom sa zmeni page na page plus 1.
-//Dobry den, je to na vas, 
-//mozete but vybrat tu spravnu otazku v tom prvom komponente a
- //potom ju posunut do QuestionList, alebo, mozete posunut currentPage do QuestionList a tak ju az tam vybrat :)
-
+import Answer from './answer';
 const QuizzMain = () => {
     const [quizzData, setQuizzData] = useState([]);
     const [checked, setChecked] = useState(false);
@@ -31,8 +20,20 @@ const QuizzMain = () => {
      };
 
      const handleChange = (event) => {
-  setChecked(event.target.checked);
-};
+        setChecked(event.target.checked);
+     };
+
+    const selectAnswer = (myChoice) => {
+        // ulozime si vybratu moznost od pouzivatela do 'selectedChoice'
+        // ALE, spravi sa to az nakoniec tejto funkcii
+        setSelectedChoice(myChoice);
+        if (quizzData[0].questions[currentQuestion].answer === myChoice) {
+            console.log('spravne!');
+        } else {
+            console.log('nespravne :(');
+        }
+    }
+
 
     
 
@@ -62,7 +63,11 @@ const QuizzMain = () => {
     }
 
     console.log(quizzData[0]);
- const chooseRightAnswer = quizzData[0].questions[currentQuestion].choices.filter((answer) => answer.title === selectedChoice)
+    
+    // najprv mame logicku časť ktora je spravna odpoved
+    // a vizualna aby nam to vykreslilo farebne.
+    //const chooseRightAnswer = quizzData[0].questions[currentQuestion].choices.filter((answer) => answer.title === selectedChoice)
+
     return (
         <>
             <div className="quizz-container">
@@ -89,10 +94,14 @@ const QuizzMain = () => {
                 <div className="quizz">
                      (
                         <div className="quizz-list">
-                            {/* <div className='question-text'>{quizzData.questions[0].question.title}</div> */}
                             {quizzData[0].questions[currentQuestion].choices.map((choice, index)  => (
                                  <div key={index}>
-                                <Question choice={choice} setNewQuestion={setNewQuestion} answer={chooseRightAnswer} />
+                                    <Answer 
+                                        onClick={() => selectAnswer(choice)} 
+                                        choice={choice} 
+                                        setNewQuestion={setNewQuestion} 
+                                        answer={quizzData[0].questions[currentQuestion].answer} 
+                                    />
                                 </div>
                             ))}
                                 
