@@ -104,11 +104,13 @@ const QuizzMain = () => {
                   <div className="quizz-list">
                       <h2>{quizzData[0].questions[currentQuestion].question}</h2>
                       {quizzData[0].questions[currentQuestion].choices.map((choice, index) => 
+                  
                         // choice = jedna z odpovedi v `choices` poli
+                        // index = cislo aktualne v mape (napriklad 0, 1, 2, 3, lebo ma vzdy 4 odpovede)
                         (
                           <Answer
-                              key={index}
-                              choice={choice}
+                              key={choice}
+                              choice={choice} // Hyper Text Markup Language
                               answer={quizzData[0].questions[currentQuestion].answer}
                               // Tato `onClick` funkcia je zavolana ked klikneme na hocijaku odpoved
                               onClick={() => {
