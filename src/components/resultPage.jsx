@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 const ResultPage = ({score,onRestart}) => {
+
+    
     
     return (
         <div>
-          <h2>Your Score: {score}</h2>
+          <h2 className='your-score'>Your Score: {score}</h2>
             <button onClick={onRestart}>Restart Quiz</button>
         </div>
     );

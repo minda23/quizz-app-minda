@@ -1,30 +1,14 @@
 import React, { useState } from 'react';
 import ResultPage from './resultPage';
 
+// onClick: prop ktoru dostaneme od quzzMain, a tato prop je v sebe vlastne setDisabled() a setAnswer().
+//          Chceme ju spustit ked je kliknuty gombik / tento answer
 const answer = ({ choice, answer, onClick }) => {
   const [isActive, setIsActive] = useState(false);
-       const [score, setScore] = useState(0);
-       const [showScore, setShowScore] = useState(false);
+ 
 
-  const selectCorrectAnswer = () => {
-    if (onClick()) {
-      setIsActive(true);
-      setScore(score + 1);
-    } else {
-      setIsActive(false);
-    }
-  };
 
-  const restartQuiz = () => {
-    setScore(0);
-    setCurrentQuestion(0);
-    setShowScore(false);
-  };
-
-  // ZISTIT: Chceme ukazat ked sa zhodzuje choice zos my answer
-  // potrbujeme: choice a answer
-  // ako ich pouzit: choice === answer
-  // onClick === answer -> vzdy FALSE lebo ked sa nezhodzuje data typ, tak vzdy to nebude to iste
+      
 
   let buttonStyle = {
     backgroundColor: choice === answer  ? 'green' : 'red',
@@ -35,17 +19,18 @@ const answer = ({ choice, answer, onClick }) => {
 
   return (
     
-    <div className="questions-container" onClick={() => {setIsActive(true)}}>
-      <div className="question-block">()
+    <div className="questions-container" onClick={() => {
+      setIsActive(true)
+      onClick()
+     }}>
+      <div className="question-block">
         <button 
           style={isActive ? buttonStyle : noStyle} 
           className="question-card"
         >
           {choice}
         </button>
-        {showScore ? (
-          <ResultPage score={score} onRestart={restartQuiz} />
-        ) : null}
+       
       </div>
     </div>
   );
