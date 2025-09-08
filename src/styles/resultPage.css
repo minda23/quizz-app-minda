@@ -1,3 +1,55 @@
 .your-score{
-    color: black;
+    color: rgb(173, 162, 162);
+    font-size: 1rem;
 }
+
+.score{
+    font-size: 6rem;
+}
+
+.score-box{
+    padding: 3rem;
+    width: 24rem;
+    background-color: white;
+    border-radius: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+
+}
+
+.restart{
+    padding: 1.5rem;
+    width: 24rem;
+    font-size: 1.7;
+    color: white;
+    border-radius: 2rem;
+    background-color: #A729F5;
+}
+
+.restart:hover { filter: brightness(1.05); }
+.restart:active { transform: translateY(1px); }
+.restart:focus-visible {
+  outline: 3px solid rgba(167,41,245,0.35);
+  outline-offset: 2px;
+}
+
+/* Optional breakpoints for a touch more control */
+@media (min-width: 768px){
+  .score-box{ border-radius: 1.25rem; }
+  .restart{ border-radius: 2.25rem; }
+}
+
+@media (max-width: 360px){
+  .score{ font-size: clamp(2.25rem, 12vw, 3rem);
+ }
+ .score-box{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 15rem;
+}
+
+.restart{
+    width: 15rem;
+}
+}
+

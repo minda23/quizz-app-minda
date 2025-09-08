@@ -50,13 +50,7 @@ body.dark-mode .quizz-list h2 {
     font-style: italic;
 }
 
-.quizz {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 480px;
-}
+
 
 .quizz-list{
     color:white;
@@ -153,12 +147,11 @@ body.dark-mode .subject-card {
 .progressbar-container {
     width: 100%;
     display: flex;
-    justify-content: left;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
-    padding-left: 10rem;
     box-sizing: border-box;
-    position: relative;
-    bottom: 10rem;
+    
 }
 
 .responsive-progressbar {

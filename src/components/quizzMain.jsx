@@ -4,30 +4,50 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Answer from './answer';
 import ResultPage from './resultPage';
+import QuizzTheme from './quizzTheme';
 const QuizzMain = () => {
+    // Vsetky hodnoty ktore definujeme tuto hore, su prve hodnoty ako sa nacita stranka, a potom sa mozu zmenit
     const [quizzData, setQuizzData] = useState([]);
     const [checked, setChecked] = useState(false);
-    const [showScore, setShowScore] = useState(false);
+    const [hasQuizzEnded, setHasQuizzEnded] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const  [currentQuizz, setCurrentQuizz] = useState(0);
     const [selectedChoice, setSelectedChoice] = useState(0)
     const [score, setScore] = useState(40); 
     const [disabled,setDisabled] = useState(true)
-    
+    const [selectedTheme, setSelectedTheme] = useState(0)
     const totalQuestions = 10;
-    const restartQuiz = () => {
-    setScore(0);
-    setCurrentQuestion(0);
-    setShowScore(false);
-  };
+// Removed duplicate restartQuiz function declaration
 
     const selectedItem = quizzData.find(item => item.title === currentQuestion);
     console.log(selectedItem)
 
     const setNewQuestion = () => {
-        setCurrentQuestion(currentQuestion + 1)
-       
+        setCurrentQuestion(currentQuestion + 1) // 9 -> 10
+        console.log("spusta sa ked sa klikne na nasleduju otazku",currentQuestion)
+        if (currentQuestion >= totalQuestions - 1) {
+            setHasQuizzEnded(true)
+            console.log("spusta sa ked quizz konči",currentQuestion)
+
+        }
          
      };
+
+     const restartQuiz = () => {
+            setCurrentQuestion(0)
+            setScore(0)
+            setHasQuizzEnded(false);
+            setDisabled(true)
+         }
+
+    const selectTheme = (id) => {
+            setCurrentQuizz(id)
+            setCurrentQuestion(0)
+            setScore(0)
+            setHasQuizzEnded(false);
+            setDisabled(true)
+    }
+    
 
      const handleChange = (event) => {
         setChecked(event.target.checked);
@@ -37,12 +57,12 @@ const QuizzMain = () => {
     const selectAnswer = (myChoice) => { // => znamena arrow function (funkcia)
         setSelectedChoice(myChoice); 
         if (quizzData[0].questions[currentQuestion].answer === myChoice) {
-            
-        
+            setScore(score + 1)
         } else {
-         
+            setScore(score - 1)
         }
     };
+    
         const getButtonLabel = () => {
         if (showScore) return "Score Submitted";
         if (currentQuestion < totalQuestions) return "Next Question";
@@ -85,6 +105,7 @@ const QuizzMain = () => {
                         Frontend Quiz!
                     </h1>
                     <p className="text-heading">Pick a subject to get started.</p>
+                    
                 </div>
                 <div className="right-section">
                     <div className="toggle-section">
@@ -98,11 +119,22 @@ const QuizzMain = () => {
                         <span role="img" aria-label="moon">🌙</span>
                     </div>
                 </div>
+                    <div>
+                        <div>
+                            {quizzData.map((theme, id) => (
+                                <QuizzTheme    onClick={() => selectTheme(id)} key={id} title={theme.title} icon={theme.icon} />
+                            ))}
+                        </div>
 
+                  </div>
           <div className="quizz">
-              {!showScore ? (
+              {!hasQuizzEnded ? (
+                
+                  
+                  
                   <div className="quizz-list">
-                      <h2>{quizzData[0].questions[currentQuestion].question}</h2>
+
+                      <h2>{quizzData[currentQuizz].questions[currentQuestion].question}</h2>
                       {quizzData[0].questions[currentQuestion].choices.map((choice, index) => 
                   
                         // choice = jedna z odpovedi v `choices` poli
@@ -120,17 +152,12 @@ const QuizzMain = () => {
                                 }
                                 
                                 selectAnswer(choice);
+                                
                               }} 
                           />
                       ))}
-                  </div>
-                  
-                  
-              ) : (
-                  <ResultPage score={score} onRestart={restartQuiz} />
-              )}
-                  (
-                      <button
+              
+             <button
                       className="sub-btn"
                       onClick={setNewQuestion}
                       disabled={disabled}
@@ -139,19 +166,23 @@ const QuizzMain = () => {
                       >
                        Next Question
                       </button>
-                    )
+                  </div>
+                  
+                  
+                  
+              ) : (
+                  <ResultPage score={score} onRestart={restartQuiz} />
+              )}
+               
+                  
+            
           </div>
                
           </div>
 
-            <div className="progressbar-container">
-                <ProgressBar
-                    className="responsive-progressbar"
-                    variant="info"
-                    now={(currentQuestion / totalQuestions) * 100}
-                />
-            </div>
+         
         </>
+        
     );
 };
 

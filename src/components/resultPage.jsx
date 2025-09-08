@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-
 const ResultPage = ({score,onRestart}) => {
 
     
     
     return (
-        <div>
-          <h2 className='your-score'>Your Score: {score}</h2>
-            <button onClick={onRestart}>Restart Quiz</button>
+        <>
+        <div className='score-box'>
+           <p className='score'>{score}</p>
+            <h2 className='your-score'>out of ten</h2>
+            
         </div>
+        <div>
+         <button className='restart' onClick={onRestart}>Restart Quiz</button>
+         </div>
+         </>
     );
 };
 
