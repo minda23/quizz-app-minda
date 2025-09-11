@@ -79,6 +79,13 @@ body.dark-mode .quizz-list h2 {
     justify-content: center;
 }
 
+  .quizz-section{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+
 .question-card img {
     width: 32px;
     height: 32px;

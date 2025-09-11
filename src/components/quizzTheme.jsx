@@ -3,10 +3,8 @@ import React from 'react';
 
 const QuizzTheme = ({title,icon,onClick}) => {
     return (
-        <div className='themes'>
-            <div onClick={() => {
-            onClick();
-         }} className='button'>
+        <div className='themes '>
+            <div onClick={onClick} className='button dark'>
             <h2 >{title}</h2>
             <img src={icon} alt={title} />
             </div>

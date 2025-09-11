@@ -6,8 +6,10 @@
 
 
 .button{
-    background-color: white;
+      background-color: white;
+    color:white;
     margin-bottom: 0.5rem;
+    margin-top: 1rem;
     font-size: 1.125rem;
     font-weight: 500;
     display: grid;
@@ -16,6 +18,7 @@
     align-items: center;
     justify-items: start;
     width: 100%;
+    max-width: 40rem;
     gap: 1rem;
     border-radius: .75rem;
     border: 0;
@@ -25,4 +28,20 @@
 
 h2{
     margin-left: 1rem;
+}
+
+/* 1) SYSTÉMOVÝ TMAVÝ MÓD */
+@media (prefers-color-scheme: dark) {
+  .button{
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+/* 2) VLASTNÝ TMAVÝ MÓD CEZ TRIEDU NA <html> ALEBO <body> */
+html.dark .button,
+body.dark .button,
+[data-theme="dark"] .button{
+  background-color: #000;
+  color: #fff;
 }

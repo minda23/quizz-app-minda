@@ -11,14 +11,20 @@ const QuizzMain = () => {
     const [checked, setChecked] = useState(false);
     const [hasQuizzEnded, setHasQuizzEnded] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const  [currentQuizz, setCurrentQuizz] = useState(0);
+    const  [currentQuizz, setCurrentQuizz] = useState(null);
     const [selectedChoice, setSelectedChoice] = useState(0)
     const [score, setScore] = useState(40); 
+      const [show, setShow] = useState(false);
     const [disabled,setDisabled] = useState(true)
-    const [selectedTheme, setSelectedTheme] = useState(0)
-    const totalQuestions = 10;
-// Removed duplicate restartQuiz function declaration
 
+
+
+
+  function toggle() {
+    setShow((show) => !show);
+  }
+
+    const totalQuestions = 10;
     const selectedItem = quizzData.find(item => item.title === currentQuestion);
     console.log(selectedItem)
 
@@ -32,6 +38,9 @@ const QuizzMain = () => {
         }
          
      };
+
+     
+  
 
      const restartQuiz = () => {
             setCurrentQuestion(0)
@@ -56,6 +65,7 @@ const QuizzMain = () => {
     // Tato fukncia je zavolana ked klikneme na hocijaku odpoved
     const selectAnswer = (myChoice) => { // => znamena arrow function (funkcia)
         setSelectedChoice(myChoice); 
+        setShow(false)
         if (quizzData[0].questions[currentQuestion].answer === myChoice) {
             setScore(score + 1)
         } else {
@@ -119,68 +129,63 @@ const QuizzMain = () => {
                         <span role="img" aria-label="moon">🌙</span>
                     </div>
                 </div>
+                <div className='quizz-section'>
                     <div>
                         <div>
                             {quizzData.map((theme, id) => (
-                                <QuizzTheme    onClick={() => selectTheme(id)} key={id} title={theme.title} icon={theme.icon} />
+                                <QuizzTheme     onClick={() => {{selectTheme(id) 
+                                }
+                                }} key={id} title={theme.title} icon={theme.icon} />
                             ))}
                         </div>
 
                   </div>
-          <div className="quizz">
-              {!hasQuizzEnded ? (
-                
-                  
-                  
-                  <div className="quizz-list">
+         <div className="quizz">
+  {!hasQuizzEnded ? (
+    currentQuizz !== null && (
+      <div className="quizz-list">
+        <h2>{quizzData[currentQuizz].questions[currentQuestion].question}</h2>
 
-                      <h2>{quizzData[currentQuizz].questions[currentQuestion].question}</h2>
-                      {quizzData[0].questions[currentQuestion].choices.map((choice, index) => 
-                  
-                        // choice = jedna z odpovedi v `choices` poli
-                        // index = cislo aktualne v mape (napriklad 0, 1, 2, 3, lebo ma vzdy 4 odpovede)
-                        (
-                          <Answer
-                              key={choice}
-                              choice={choice} // Hyper Text Markup Language
-                              answer={quizzData[0].questions[currentQuestion].answer}
-                              // Tato `onClick` funkcia je zavolana ked klikneme na hocijaku odpoved
-                              onClick={() => {
-                                console.log("je to správne", quizzData[0].questions[currentQuestion].answer)
-                                if ( quizzData[0].questions[currentQuestion].answer === choice) {
-                                   setDisabled(false);
-                                }
-                                
-                                selectAnswer(choice);
-                                
-                              }} 
-                          />
-                      ))}
-              
-             <button
-                      className="sub-btn"
-                      onClick={setNewQuestion}
-                      disabled={disabled}
-                      
-                    
-                      >
-                       Next Question
-                      </button>
-                  </div>
-                  
-                  
-                  
-              ) : (
-                  <ResultPage score={score} onRestart={restartQuiz} />
-              )}
-               
-                  
-            
-          </div>
+        {quizzData[currentQuizz].questions[currentQuestion].choices.map(
+          (choice, index) => (
+            <Answer
+              key={choice}
+              choice={choice}
+              answer={quizzData[currentQuizz].questions[currentQuestion].answer}
+              onClick={() => {
+                console.log(
+                  "je to správne",
+                  quizzData[currentQuizz].questions[currentQuestion].answer
+                );
+                if (
+                  quizzData[currentQuizz].questions[currentQuestion].answer ===
+                  choice
+                ) {
+                  setDisabled(false);
+                }
+                selectAnswer(choice);
+              }}
+            />
+          )
+        )}
+
+        <button
+          className="sub-btn"
+          onClick={setNewQuestion}
+          disabled={disabled}
+        >
+          Next Question
+        </button>
+      </div>
+    )
+  ) : (
+    <ResultPage score={score} onRestart={restartQuiz} />
+  )}
+</div>
                
           </div>
 
-         
+         </div>
         </>
         
     );
