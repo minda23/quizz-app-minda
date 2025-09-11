@@ -140,10 +140,12 @@ const QuizzMain = () => {
                     <div>
                         <div>
                             {quizzData.map((theme, id) => (
-                                <QuizzTheme     onClick={() => {{selectTheme(id) 
+                              currentQuizz == null && ( 
+                             <QuizzTheme onClick={() => {{selectTheme(id) 
                                 }
                                 }} key={id} title={theme.title} icon={theme.icon} />
-                            ))}
+                            )) )}
+                         
                         </div>
 
                   </div>
