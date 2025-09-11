@@ -14,15 +14,15 @@ const QuizzMain = () => {
     const  [currentQuizz, setCurrentQuizz] = useState(null);
     const [selectedChoice, setSelectedChoice] = useState(0)
     const [score, setScore] = useState(40); 
-      const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
     const [disabled,setDisabled] = useState(true)
+    const [numberOfTimesClicked, setNumberOfTimesClicked] = useState(0)
 
 
-
-
-  function toggle() {
-    setShow((show) => !show);
-  }
+    let buttonStyle = {
+      backgroundColor: disabled === true  ? '#9378a3ff' : '#A729F5',
+      transition: 'background-color 0.5s',
+    };
 
     const totalQuestions = 10;
     const selectedItem = quizzData.find(item => item.title === currentQuestion);
@@ -30,6 +30,7 @@ const QuizzMain = () => {
 
     const setNewQuestion = () => {
         setDisabled(true)
+        setNumberOfTimesClicked(0)
         setCurrentQuestion(currentQuestion + 1) // 9 -> 10
         console.log("spusta sa ked sa klikne na nasleduju otazku",currentQuestion)
         if (currentQuestion >= totalQuestions - 1) {
@@ -64,11 +65,19 @@ const QuizzMain = () => {
     const selectAnswer = (myChoice) => { // => znamena arrow function (funkcia)
         setSelectedChoice(myChoice); 
         setShow(false)
+        setNumberOfTimesClicked(numberOfTimesClicked + 1)
+     
+        // Chceme pridat bod, len ked na prvy krat uhadne spravne odpoved
+        // 1. Potrebujeme vediet ze kolko krat bola kliknuta odpoved
+        // 2. Podmienka ked bola raz kliknute, tak sa prida bod
+        // aby som niečo pridal , musim si napr. držať v hlave tu hodnotu a chcem tu hodnotu odstraniť alebo pridať,
+        // tak musim povedať tomu programu že chcem pridať čislo alebo ak pridam čislo čo chcem s tym dalej robiť.
+
         if (quizzData[0].questions[currentQuestion].answer === myChoice) {
+          if(numberOfTimesClicked === 0) {
             setScore(score + 1)
-        } else {
-            setScore(score - 1)
-        }
+          }
+        } 
     };
     
         const getButtonLabel = () => {
@@ -171,6 +180,7 @@ const QuizzMain = () => {
           className="sub-btn"
           onClick={setNewQuestion}
           disabled={disabled}
+          style={buttonStyle} 
         >
           Next Question
         </button>
