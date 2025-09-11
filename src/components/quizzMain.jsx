@@ -29,6 +29,7 @@ const QuizzMain = () => {
     console.log(selectedItem)
 
     const setNewQuestion = () => {
+        setDisabled(true)
         setCurrentQuestion(currentQuestion + 1) // 9 -> 10
         console.log("spusta sa ked sa klikne na nasleduju otazku",currentQuestion)
         if (currentQuestion >= totalQuestions - 1) {
@@ -38,9 +39,6 @@ const QuizzMain = () => {
         }
          
      };
-
-     
-  
 
      const restartQuiz = () => {
             setCurrentQuestion(0)
