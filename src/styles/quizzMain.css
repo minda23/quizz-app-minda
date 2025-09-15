@@ -82,7 +82,8 @@ body.dark-mode .quizz-list h2 {
   .quizz-section{
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+  
+    
   }
 
 
