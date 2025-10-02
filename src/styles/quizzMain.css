@@ -188,7 +188,15 @@ body.dark-mode .subject-card {
 
 .quizz-list{
     flex:2;
-    margin-left: 5rem;
+ 
+}
+
+@media (min-width: 576px) {
+    .quizz-list{
+     margin-left: 5rem;
+ 
+}
+       
 }
 
 .count-question p {
