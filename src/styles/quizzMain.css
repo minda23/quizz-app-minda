@@ -120,12 +120,12 @@ body {
 .question-card {
     background: #e4e8f0;
     color: #1e2a38;
+    flex: 1;
 }
 
 .sub-btn {
     padding: 1.5rem;
     width: 100%;
-    max-width: 480px;
     font-size: 1.7;
     color: white;
     border-radius: 2rem;
@@ -176,12 +176,19 @@ body.dark-mode .subject-card {
   justify-content: space-around; 
   min-height: 100vh;     
   flex-wrap: wrap;
+  max-width: 55rem;
 }
 
 
 .count-question{
     color: white;
+    flex: 1;
 
+}
+
+.quizz-list{
+    flex:2;
+    margin-left: 5rem;
 }
 
 .count-question p {

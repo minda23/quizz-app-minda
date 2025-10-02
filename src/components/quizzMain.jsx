@@ -65,9 +65,7 @@ const QuizzMain = () => {
         setScore((prev) => prev + 1);
       }
     }
-     else {
-        setDisabled(true)
-      }
+     
  
   };
 
@@ -96,7 +94,7 @@ const QuizzMain = () => {
             <div className="questions-section">
               <div className="count-question">
                 <p className='.title-question-count'>
-                  question {currentQuestion + 1} of {totalQuestions}
+                  Question {currentQuestion + 1} of {totalQuestions}
                 </p>
                 <h2>
                   {quizzData[currentQuizz].questions[currentQuestion].question}
