@@ -1,3 +1,17 @@
+.result_section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+.result_heading{
+  font-size: 1.6rem;
+}
+
+
+
+
 .your-score{
     color: rgb(173, 162, 162);
     font-size: 1rem;
@@ -6,6 +20,14 @@
 .score{
     font-size: 6rem;
 }
+
+.score_wrapper{
+     min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
 
 .score-box{
     padding: 3rem;
@@ -69,25 +91,24 @@
   outline-offset: 2px;
 }
 
-/* Tablet (max 1024px) */
+
 @media (max-width: 1024px){
   .score { font-size: 5rem; }
   .score-box, .restart { width: 20rem; }
 }
 
-/* Small tablets / large phones (max 768px) */
 @media (max-width: 768px){
   .score { font-size: 4rem; }
   .score-box, .restart { width: 18rem; }
 }
 
-/* Phones (max 480px) */
+
 @media (max-width: 480px){
   .score { font-size: 3rem; }
   .score-box, .restart { width: 90%; margin: 0 auto 1rem auto; }
 }
 
-/* Extra small phones (max 360px) */
+
 @media (max-width: 360px){
   .score { font-size: 2.5rem; }
   .score-box { width: 15rem; margin-left: auto; margin-right: auto; }
