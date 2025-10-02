@@ -60,11 +60,15 @@ const QuizzMain = () => {
     setNumberOfTimesClicked((prev) => prev + 1);
 
     if (quizzData[currentQuizz].questions[currentQuestion].answer === myChoice) {
+         setDisabled(false);
       if (numberOfTimesClicked === 0) {
         setScore((prev) => prev + 1);
       }
     }
-    setDisabled(false);
+     else {
+        setDisabled(true)
+      }
+ 
   };
 
   useEffect(() => {
@@ -118,7 +122,7 @@ const QuizzMain = () => {
                 <button
                   className="sub-btn"
                   onClick={setNewQuestion}
-                  //disabled={disabled}
+                  disabled={disabled}
                   style={buttonStyle}
                 >
                   Next Question
