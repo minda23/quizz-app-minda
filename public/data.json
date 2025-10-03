@@ -61,7 +61,7 @@
                         "Downloads all messages every second",
                         "Makes one global chat connection forever.",
                         "Changes chat room CSS when roomId changes",
-                        "Opens a chat connection on roomId change and cleans it up"
+                        "Opens a chat connection on roomId change and cleans it up."
                     ],
                     "answer": "Opens a chat connection on roomId change and cleans it up."
                 },
