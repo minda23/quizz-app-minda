@@ -1,6 +1,7 @@
-body {
-  background-color: #000;   
-  color: #fff;           
+html, body {
+  background-color: #000 !important;
+  color: #fff;
+  min-height: 100%;
 }
 
 .heading-quizz,
