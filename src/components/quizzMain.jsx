@@ -120,7 +120,7 @@ const QuizzMain = () => {
                 <button
                   className="sub-btn"
                   onClick={setNewQuestion}
-                  //disabled={disabled}
+                  disabled={disabled}
                   style={buttonStyle}
                 >
                   Next Question
