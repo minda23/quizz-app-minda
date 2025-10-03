@@ -6,7 +6,7 @@ const QuizzTheme = ({title,icon,onClick}) => {
         <div className='themes '>
             <div onClick={onClick} className='button dark'>
             <h2 >{title}</h2>
-            <img src={icon} alt={title} />
+            <img className='icon' src={icon} alt={title} />
             </div>
         </div>
     );

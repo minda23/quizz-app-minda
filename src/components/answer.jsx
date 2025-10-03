@@ -6,10 +6,6 @@ import ResultPage from './resultPage';
 const answer = ({ choice, answer, onClick }) => {
   const [isActive, setIsActive] = useState(false);
  
-
-
-      
-
   let buttonStyle = {
     backgroundColor: choice === answer  ? 'green' : 'red',
      border: choice === answer ? '2px solid green' : '2px solid red',

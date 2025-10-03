@@ -1,5 +1,112 @@
 {
     "quizzes": [
+         {
+            "title": "React",
+            "icon": "./images/react-icon.webp",
+            "questions": [
+                {
+                    "question": "What does HTML stand for?",
+                    "choices": [
+                        "Hyper Trainer Marking Language",
+                        "Hyper Text Marketing Language",
+                        "Hyper Text Markup Language",
+                        "Hyper Text Markup Leveler"
+                    ],
+                    "answer": "Hyper Text Markup Language"
+                    
+                },
+                {
+                    "question": "Which of the following is the correct structure for an HTML document?",
+                    "choices": [
+                        "<html><head></head><body></body></html>",
+                        "<head><html></html><body></body></head>",
+                        "<body><head></head><html></html></body>",
+                        "<html><body></body><head></head></html>"
+                    ],
+                    "answer": "<html><head></head><body></body></html>"
+                },
+                {
+                    "question": "Which HTML element is used to define the title of a document?",
+                    "choices": [
+                        "<head>",
+                        "<title>",
+                        "<header>",
+                        "<top>"
+                    ],
+                    "answer": "<title>"
+                },
+                {
+                    "question": "What is the purpose of the <body> tag in HTML?",
+                    "choices": [
+                        "It defines the document's head section.",
+                        "It contains all the content such as text, images, and links.",
+                        "It is used to define the main content of an HTML document.",
+                        "It specifies the body of the email content in HTML."
+                    ],
+                    "answer": "It contains all the content such as text, images, and links."
+                },
+                {
+                    "question": "Which HTML tag is used to create a hyperlink?",
+                    "choices": [
+                        "<hyperlink>",
+                        "<link>",
+                        "<a>",
+                        "<href>"
+                    ],
+                    "answer": "<a>"
+                },
+                {
+                    "question": "Which tag is used to display images in HTML?",
+                    "choices": [
+                        "<img>",
+                        "<image>",
+                        "<src>",
+                        "<pic>"
+                    ],
+                    "answer": "<img>"
+                },
+                {
+                    "question": "What attribute is used to provide the path of an image in the <img> tag?",
+                    "choices": [
+                        "link",
+                        "src",
+                        "href",
+                        "url"
+                    ],
+                    "answer": "src"
+                },
+                {
+                    "question": "Which HTML tag is used to create an unordered list?",
+                    "choices": [
+                        "<ul>",
+                        "<ol>",
+                        "<list>",
+                        "<li>"
+                    ],
+                    "answer": "<ul>"
+                },
+                {
+                    "question": "What does the <br> tag do?",
+                    "choices": [
+                        "It breaks the text into two sections.",
+                        "It creates a bold text.",
+                        "It inserts a line break.",
+                        "It adds a new row in a table."
+                    ],
+                    "answer": "It inserts a line break."
+                },
+                {
+                    "question": "In HTML, what does the `fieldset` tag do?",
+                    "choices": [
+                        "It is used to group related data in a form.",
+                        "It sets the field to a fixed size.",
+                        "It automatically validates the fields within a form.",
+                        "It hides the fields in a form."
+                    ],
+                    "answer": "It is used to group related data in a form."
+                }
+            ]
+        },
         {
             "title": "HTML",
             "icon": "./images/icon-html.svg",

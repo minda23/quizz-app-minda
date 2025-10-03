@@ -93,10 +93,10 @@ const QuizzMain = () => {
           {!hasQuizzEnded ? (
             <div className="questions-section">
               <div className="count-question">
-                <p className='.title-question-count'>
+                <p className='title-question-count'>
                   Question {currentQuestion + 1} of {totalQuestions}
                 </p>
-                <h2>
+                <h2 className='heading-question'>
                   {quizzData[currentQuizz].questions[currentQuestion].question}
                 </h2>
                 <ProgressBar 
@@ -120,7 +120,7 @@ const QuizzMain = () => {
                 <button
                   className="sub-btn"
                   onClick={setNewQuestion}
-                  disabled={disabled}
+                  //disabled={disabled}
                   style={buttonStyle}
                 >
                   Next Question

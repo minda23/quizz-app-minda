@@ -123,6 +123,11 @@ body {
     flex: 1;
 }
 
+    .heading-question{
+        margin-bottom: 1rem;
+    }
+
+
 .sub-btn {
     padding: 1.5rem;
     width: 100%;
