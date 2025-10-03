@@ -5,105 +5,105 @@
             "icon": "./images/react-icon.webp",
             "questions": [
                 {
-                    "question": "What does HTML stand for?",
+                    "question": "Which hook do we use to update the internal state of the component?",
                     "choices": [
-                        "Hyper Trainer Marking Language",
-                        "Hyper Text Marketing Language",
-                        "Hyper Text Markup Language",
-                        "Hyper Text Markup Leveler"
+                        "useRef",
+                        "useReducer",
+                        "useState",
+                        "useContext"
                     ],
-                    "answer": "Hyper Text Markup Language"
+                    "answer": "useState"
                     
                 },
                 {
-                    "question": "Which of the following is the correct structure for an HTML document?",
+                    "question": "What are hook props used for??",
                     "choices": [
-                        "<html><head></head><body></body></html>",
-                        "<head><html></html><body></body></head>",
-                        "<body><head></head><html></html></body>",
-                        "<html><body></body><head></head></html>"
+                        "Props are used to import components",
+                        "Props are used for communication between hooks",
+                        "Props are used to send data to the server",
+                        "Props are used for communication between parent components and their children"
                     ],
-                    "answer": "<html><head></head><body></body></html>"
+                    "answer": "Props are used for communication between parent components and their children"
                 },
                 {
-                    "question": "Which HTML element is used to define the title of a document?",
+                    "question": "What is useEffect used for?",
                     "choices": [
-                        "<head>",
-                        "<title>",
-                        "<header>",
-                        "<top>"
+                        "UseEffect is used to style React components with CSS and change how buttons look.",
+                        "Causes the browser to render the component only once",
+                        "Responds to the component's life cycle",
+                        "UseEffect is a hook that needs to be installed."
                     ],
-                    "answer": "<title>"
+                    "answer": "Responds to the component's life cycle"
                 },
                 {
-                    "question": "What is the purpose of the <body> tag in HTML?",
+                    "question": "What is useReducer used for?",
                     "choices": [
-                        "It defines the document's head section.",
-                        "It contains all the content such as text, images, and links.",
-                        "It is used to define the main content of an HTML document.",
-                        "It specifies the body of the email content in HTML."
+                        "It's a kind of react library.",
+                        "Used to update internal state of components.",
+                        "Used to manage more complex states in React apps.",
+                        "It's does not exist"
                     ],
-                    "answer": "It contains all the content such as text, images, and links."
+                    "answer": "Used to manage more complex states in React apps."
                 },
                 {
-                    "question": "Which HTML tag is used to create a hyperlink?",
+                    "question": "What is the syntax of use state?",
                     "choices": [
-                        "<hyperlink>",
-                        "<link>",
-                        "<a>",
-                        "<href>"
+                        "const [state, State] = useState(initialState)",
+                        "const [state, setState] = useState(initialState)",
+                        "const [state, setState] = useState",
+                        "const state, setState = useState(initialState)"
                     ],
-                    "answer": "<a>"
+                    "answer": "const [state, setState] = useState(initialState)"
                 },
                 {
-                    "question": "Which tag is used to display images in HTML?",
+"question": "What does this code do? function ChatRoom({ roomId }) { useEffect(() => { const connection = createConnection(roomId); connection.connect(); return () => connection.disconnect(); }, [roomId]); }",
                     "choices": [
-                        "<img>",
-                        "<image>",
-                        "<src>",
-                        "<pic>"
+                        "Downloads all messages every second",
+                        "Makes one global chat connection forever.",
+                        "Changes chat room CSS when roomId changes",
+                        "Opens a chat connection on roomId change and cleans it up"
                     ],
-                    "answer": "<img>"
+                    "answer": "Opens a chat connection on roomId change and cleans it up."
                 },
                 {
-                    "question": "What attribute is used to provide the path of an image in the <img> tag?",
+                    "question": "What is the correct syntax for the useReducer function?",
                     "choices": [
-                        "link",
-                        "src",
-                        "href",
-                        "url"
+                        "const [state, dispatch] = useReducer(reducer, { age: 42 });",
+                        "function reducer(state) {// ...}",
+                        "function reducer(state, action) {// ...}",
+                        "function state(state, action) {// ...}"
                     ],
-                    "answer": "src"
+                    "answer": "function reducer(state, action) {// ...}"
                 },
                 {
-                    "question": "Which HTML tag is used to create an unordered list?",
+                    "question": "where we set the initial color in the state?",
                     "choices": [
-                        "<ul>",
-                        "<ol>",
-                        "<list>",
-                        "<li>"
+                        "function FavoriteColor() { [color, setColor] = useState(\"red\");}",
+                        "function FavoriteColor() {const red [color, setColor] = useState();}",
+                        "function FavoriteColor() {const [color, setColor(red)] = useState();}",
+                        "function FavoriteColor() {const [color, setColor] = useState(\"red\");}"
                     ],
-                    "answer": "<ul>"
+                    "answer": "function FavoriteColor() {const [color, setColor] = useState(\"red\");}"
                 },
                 {
-                    "question": "What does the <br> tag do?",
+                    "question": "What is hook useContext used for?",
                     "choices": [
-                        "It breaks the text into two sections.",
-                        "It creates a bold text.",
-                        "It inserts a line break.",
-                        "It adds a new row in a table."
+                        "Is the same as hook props.",
+                        "The useContext() hook allows a component to access context values provided higher up in the component tree.",
+                        "If we want to import child components into parent components.",
+                        "To change state of component."
                     ],
-                    "answer": "It inserts a line break."
+                    "answer": "The useContext() hook allows a component to access context values provided higher up in the component tree."
                 },
                 {
-                    "question": "In HTML, what does the `fieldset` tag do?",
+                    "question": "how to wrap the content we want to pass through Context?",
                     "choices": [
-                        "It is used to group related data in a form.",
-                        "It sets the field to a fixed size.",
-                        "It automatically validates the fields within a form.",
-                        "It hides the fields in a form."
+                        " <MyContext.value=\"data\"><Form /></MyContext.value>",
+                        "<MyContext.Provider value=\"data\"><Form /></MyContext.Provider>",
+                        "<MyContext value=\"data\"><Form /></MyContext>",
+                        "<MyContext.Provider context=\"data\"><Form /></MyContext.Provider>"
                     ],
-                    "answer": "It is used to group related data in a form."
+                    "answer": "<MyContext.Provider value=\"data\"><Form /></MyContext.Provider>"
                 }
             ]
         },
