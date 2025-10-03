@@ -1,8 +1,18 @@
 body {
-  background-color: #fff;
-  color: #000;
+  background-color: #000;   
+  color: #fff;           
 }
 
+.heading-quizz,
+.text-heading,
+.quizz-list h2 {
+  color: #fff;
+}
+
+.question-card {
+  background: #222; 
+  color: #fff;
+}
 .quizz-container {
     display: flex;
     flex-direction: row;
