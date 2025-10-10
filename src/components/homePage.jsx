@@ -12,11 +12,17 @@ import QuizzTheme from './quizzTheme';
 const homePage = ({quizzData,selectTheme}) => {
 
       const [checked, setChecked] = useState(false);
+  
      
       const handleChange = (event) => {
        setChecked(event.target.checked);
   };
 
+  useEffect(() => {
+    document.body.classList.toggle('light-mode', checked);
+    document.body.classList.toggle('dark-mode', !checked);
+  }, [checked]);
+  
 return (
 
         <div className="quizz-container">

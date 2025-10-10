@@ -76,10 +76,6 @@ const QuizzMain = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  useEffect(() => {
-    document.body.classList.toggle('light-mode', checked);
-    document.body.classList.toggle('dark-mode', !checked);
-  }, [checked]);
 
   if (!quizzData || quizzData.length === 0) {
     return <div>Loading...</div>;
