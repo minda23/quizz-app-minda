@@ -248,7 +248,7 @@ body.dark-mode .subject-card {
         display: flex;
         justify-content: center;
         padding: 1rem;
-        box-sizing: border-box;
+        box-sizing: content-box;
         
     }
 
