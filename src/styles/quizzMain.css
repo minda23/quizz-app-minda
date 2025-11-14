@@ -133,7 +133,7 @@ body {
 }
 
 .question-card {
-    background: #e4e8f0;
+    background: bisque;
     color: #1e2a38;
     flex: 1;
 }
@@ -169,6 +169,10 @@ body.dark-mode .text-heading {
 body.dark-mode .subject-card {
     background: #3b4d66;
     color: #ffffff;
+}
+
+.body.dark-mode .question-card{
+    background: white;
 }
 
 

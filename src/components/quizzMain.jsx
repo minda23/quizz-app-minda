@@ -1,7 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { Switch } from "@mui/material";
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Answer from './answer';
 import ResultPage from './resultPage'; 
 import HomePage from './homePage';
