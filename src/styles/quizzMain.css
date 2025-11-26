@@ -1,18 +1,19 @@
 body {
-  background-color: #000;   
-  color: #fff;           
+    background-color: #000;
+    color: #fff;
 }
 
 .heading-quizz,
 .text-heading,
 .quizz-list h2 {
-  color: #fff;
+    color: #fff;
 }
 
 .question-card {
-  background: #222; 
-  color: #fff;
+    background: #222;
+    color: #fff;
 }
+
 .quizz-container {
     display: flex;
     flex-direction: row;
@@ -52,24 +53,27 @@ body .heading-quizz {
 }
 
 body .quizz-list h2 {
-  color: black;   /* Light theme */
+    color: black;
+    /* Light theme */
 }
 
 body.dark-mode .quizz-list h2 {
-  color: white;   /* Dark theme */
+    color: white;
+    /* Dark theme */
 }
 
 .text-heading {
     font-size: 1.1rem;
-    color:black;
+    color: black;
     font-style: italic;
 }
 
 
 
-.quizz-list{
-    color:white;
+.quizz-list {
+    color: white;
 }
+
 .question-list {
     display: flex;
     flex-direction: column;
@@ -94,12 +98,12 @@ body.dark-mode .quizz-list h2 {
     justify-content: center;
 }
 
-  .quizz-section{
+.quizz-section {
     display: flex;
     flex-direction: row;
-  
-    
-  }
+
+
+}
 
 
 .question-card img {
@@ -115,9 +119,9 @@ body.dark-mode .quizz-list h2 {
 /* Dark mode */
 /* Light Theme (default) */
 body {
-    background-color: #000000;   
-    background-image: none;      
-    color: #ffffff;              
+    background-color: #000000;
+    background-image: none;
+    color: #ffffff;
 }
 
 
@@ -138,9 +142,9 @@ body {
     flex: 1;
 }
 
-    .heading-question{
-        margin-bottom: 1rem;
-    }
+.heading-question {
+    margin-bottom: 1rem;
+}
 
 
 .sub-btn {
@@ -171,7 +175,7 @@ body.dark-mode .subject-card {
     color: #ffffff;
 }
 
-.body.dark-mode .question-card{
+.body.dark-mode .question-card {
     background: white;
 }
 
@@ -183,7 +187,7 @@ body.dark-mode .subject-card {
     align-items: center;
     padding: 1rem;
     box-sizing: border-box;
-    
+
 }
 
 .responsive-progressbar {
@@ -192,35 +196,35 @@ body.dark-mode .subject-card {
 }
 
 
-.questions-section{
-  display: flex;
-  flex-direction: row;  
-  gap: 2rem;
-  align-items: center;     
-  justify-content: space-around; 
-  min-height: 100vh;     
-  flex-wrap: wrap;
-  max-width: 55rem;
+.questions-section {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    max-width: 55rem;
 }
 
 
-.count-question{
+.count-question {
     color: white;
     flex: 1;
 
 }
 
-.quizz-list{
-    flex:2;
- 
+.quizz-list {
+    flex: 2;
+
 }
 
 @media (min-width: 576px) {
-    .quizz-list{
-     margin-left: 5rem;
- 
-}
-       
+    .quizz-list {
+        margin-left: 5rem;
+
+    }
+
 }
 
 .count-question p {
@@ -228,9 +232,9 @@ body.dark-mode .subject-card {
     font-size: 1.6rem;
 }
 
-.title-question-count{
+.title-question-count {
     margin-left: 3rem;
-    
+
 }
 
 @media (max-width: 1200px) {
@@ -246,10 +250,10 @@ body.dark-mode .subject-card {
     .progressbar-container {
         width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         padding: 1rem;
         box-sizing: content-box;
-        
+
     }
 
 
@@ -259,32 +263,33 @@ body.dark-mode .subject-card {
 
 
 @media (max-width: 576px) {
-    
+
     .heading-quizz {
         font-size: 1.8rem;
     }
-    
+
 
     .text-heading {
         font-size: 1rem;
     }
 
     .questions-section {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: auto;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: auto;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
     }
 
     .count-question,
     .quizz-list {
-    flex: unset;
-    width: 100%;
-    max-width: 400px;
-           }
+        flex: unset;
+        width: 100%;
+        max-width: 400px;
+    }
+
     .question-card {
         font-size: 1.1rem;
         padding: 1rem 1.5rem;
@@ -306,4 +311,3 @@ body.dark-mode .subject-card {
         margin-left: -0.5rem;
     }
 }
-
